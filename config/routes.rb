@@ -1,5 +1,5 @@
 Ativa::Application.routes.draw do
-  root to: "projects#index"
+    root to: "projects#index"
   get 'projects/:id/:phase/:show_partial' => 'projects#show', as: 'project_partial'
   get 'projects/:id/:phase' => 'projects#set_phase', as: 'set_phase'
   resources :projects

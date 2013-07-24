@@ -6,6 +6,10 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'figaro'
+gem 'fog'
 
 
 # Gems used only for assets and not required

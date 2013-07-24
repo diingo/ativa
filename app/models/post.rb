@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   belongs_to :project
   belongs_to :phase
 
+  mount_uploader :attachment, ImageUploader
+
   default_scope order('created_at DESC')
 
   def snippet
