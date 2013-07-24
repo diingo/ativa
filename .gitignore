@@ -21,3 +21,6 @@ vendor/bundle
 /config/application.yml
 
 rootkey.csv
+
+.DS_Store
+vendor/bundle
