@@ -3,6 +3,7 @@
 %br
 %br
 
+
 .row-fluid
   .span4.offset4
     %h1.pagination-centered Sign Up
@@ -35,3 +36,4 @@
         .submitbox
           .actions
             = f.submit 'Sign Up', :class => "btn btn-block btn-primary btn-large"
+            = f.hidden_field :generated_number, value: @generated_number

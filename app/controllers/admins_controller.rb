@@ -1,9 +1,11 @@
 class AdminsController < ApplicationController
   def new
     @admin = Admin.new
+    @generated_number = params[:generated_number]
   end
 
   def create
+    generated_number = params[:admin][:generated_number].to_s
 
     admin = Admin.new(
       name: params[:admin][:name],
@@ -12,12 +14,19 @@ class AdminsController < ApplicationController
       password_confirmation: params[:admin][:password_confirmation]
     )
 
-    #if it works, let them sign in and if not, let them try again
-    if admin.save
-      redirect_to sign_in_path
+    user_generated_number = params[:admin][:generated_number]
+    user_email = admin.email
+
+    padmin = PotentialAdmin.find_by_email(user_email)
+    if padmin && admin.save && padmin.generated_number == user_generated_number
+      PotentialAdmin.find_by_email(user_email).destroy
+      redirect_to signin_path
     else
-      redirect_to admin_new_path
+      redirect_to admin_new_path(generated_number: generated_number)
     end
 
   end
+
+
+
 end

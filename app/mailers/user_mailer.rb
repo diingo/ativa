@@ -16,4 +16,5 @@ class UserMailer < ActionMailer::Base
     @generated_number = potential_admin.generated_number
     mail(:to => "#{@potential_admin.email}", :subject => "Welcome to Ativa! | MakerSquare. You are a potential admin") 
   end
+
 end
