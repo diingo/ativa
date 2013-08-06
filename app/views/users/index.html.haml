@@ -1,19 +1,52 @@
 .row_fluid
-	.span10.offset1
-		%h2
-			Users
-			%small= link_to "Add User", new_user_path
+  .span10.offset1
+    %h2
+      Users
+      %small= link_to "Add User", new_user_path
 
 .row-fluid
-	.span10.offset1
-		%table.table.table-bordered.table-hover
-			%thead
-				%tr
-					%th.span6 Name
-					%th.span6 Email
-			%tbody
-				- @users.each do |user|
-					%tr
-						%td
-							= link_to user.name, user_path(user.id)
-						%td= user.email
+  .span10.offset1
+    %table.table.table-bordered.table-hover
+      %thead
+        %tr
+          %th.span6 Name
+          %th.span6 Email
+      %tbody
+        - if @clients.count > 0
+          - @clients.each do |client|
+            %tr
+              %td
+                = link_to client.name, user_path(client.id)
+              %td= client.email
+
+        - if @admins.count > 0
+          - @admins.each do |admin|
+            %tr
+              %td
+                = link_to admin.name, user_path(admin.id)
+              %td= admin.email
+
+- if is_signed_in?
+  .row_fluid
+    .span10.offset1
+      %h2
+        Pending Admins
+        %small Below are admins that have yet to respond
+  .row-fluid
+    .span10.offset1
+      %table.table.table-bordered.table-hover
+        %thead
+          %tr
+            %th.span6 Email
+            %th.span6 Action
+          %tr
+            = form_for @potential do |f| #@potential = PotenetialAdmin.new
+              %td= f.text_field :email, placeholder: "Email address"
+              %td= f.submit "Add Admin"
+          - @potentials.each do |potential|
+            %tr
+              %td= potential.email
+              %td (email sent)
+
+
+

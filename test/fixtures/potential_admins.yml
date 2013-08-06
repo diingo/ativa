@@ -2,8 +2,8 @@
 
 one:
   email: MyString
-  generated_number: MyString
+  generated_number: 
 
 two:
   email: MyString
-  generated_number: MyString
+  generated_number: 

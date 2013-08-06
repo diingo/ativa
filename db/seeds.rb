@@ -35,7 +35,7 @@ puts "Added projects"
 
 users = ["Shehzan", "Matt", "Harsh", "Shaan", "Ravi"]
 users.each do |u|
-  User.create(name: u, email: "#{u}@themakersquare.com", password: "password", password_confirmation: "password")
+  Client.create(name: u, email: "#{u}@themakersquare.com", password: "password", password_confirmation: "password")
 end
 
 puts "Added users"

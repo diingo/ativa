@@ -8,16 +8,20 @@ class UsersController < ApplicationController
   end
 
   def create
-	  @user = User.new(params[:user])
-	  if @user.save
-		  flash[:success] = "Welcome to my awesome app!"
-		  redirect_to user_url(@user.id)
-	  else
-		  render 'new'
-	  end
+	     @user = Client.new(params[:user])
+    if @user.save
+      UserMailer.signup_confirmation(@user).deliver
+      flash[:success] = "Welcome to my awesome app!"
+      redirect_to user_url(@user.id)
+    else
+      render 'new'
+    end
   end
 
   def index
-    @users = User.all
+    @clients = Client.all
+    @admins = Admin.all
+    @potential = PotentialAdmin.new
+    @potentials = PotentialAdmin.all
   end
 end
