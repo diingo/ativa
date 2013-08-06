@@ -13,6 +13,7 @@ class UserMailer < ActionMailer::Base
 
   def admin_confirmation(potential_admin)
     @potential_admin = potential_admin
-    mail(:to => "{@potential_admin.email}", :subject => "Welcome to Ativa! | MakerSquare. You are a potential admin") 
+    @generated_number = potential_admin.generated_number
+    mail(:to => "#{@potential_admin.email}", :subject => "Welcome to Ativa! | MakerSquare. You are a potential admin") 
   end
 end

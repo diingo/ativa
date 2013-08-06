@@ -5,11 +5,11 @@ class PotentialAdminsController < ApplicationController
   end
 
   def create
-    potential_admin = PotentialAdmin.new(email: params[:potential_admin][:email]) #pull in the email address from the form here
+    @potential_admin = PotentialAdmin.new(email: params[:potential_admin][:email]) #pull in the email address from the form here
    
 
-      if potential_admin.save
-          UserMailer.admin_confirmation(potential_admin).deliver
+      if @potential_admin.save
+          UserMailer.admin_confirmation(@potential_admin).deliver
       end
 
       redirect_to users_path
@@ -27,6 +27,6 @@ class PotentialAdminsController < ApplicationController
     #     format.json { render json: @user.errors, status: :unprocessable_entity }
     #   end
     # end
-    
+
   end
 end

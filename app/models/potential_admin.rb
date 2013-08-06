@@ -6,6 +6,8 @@ class PotentialAdmin < ActiveRecord::Base
 
   # WRITE THE CODE we want to generate the unique number for each potential admin entry created
 
+  before_create :generate_unique_number
+
   def generate_unique_number
     number = SecureRandom.hex(3)
     while PotentialAdmin.find_by_generated_number(number)
@@ -13,6 +15,7 @@ class PotentialAdmin < ActiveRecord::Base
     end
     self.generated_number = number
   end
+
 end
 
 

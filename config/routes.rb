@@ -16,6 +16,8 @@ Ativa::Application.routes.draw do
 
   post '/potential_admins' => "potential_admins#create"
 
+  get '/admins/new' => 'admins#new', as: 'admin_new'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
